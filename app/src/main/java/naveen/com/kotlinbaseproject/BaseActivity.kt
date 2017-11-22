@@ -1,6 +1,9 @@
 package netset.com.kotlinbaseproject
 
-import android.content.*
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.net.ConnectivityManager
 import android.net.wifi.WifiManager
@@ -25,7 +28,7 @@ import java.util.*
  */
 open class BaseActivity : AppCompatActivity() {
 
-    public val networkDialog: AlertDialog.Builder?=null
+    public val networkDialog: AlertDialog.Builder? = null
     public var networkAlertDialog: AlertDialog? = null
     public var networkStatus: String? = null
     public var permCallback: PermCallBack? = null
@@ -35,8 +38,8 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
-        networkDialog = AlertDialog.Builder(this)
-        initializeNetworkBroadcast();
+       // networkDialog = AlertDialog.Builder(this)
+        initializeNetworkBroadcast()
     }
 
 
@@ -108,7 +111,7 @@ open class BaseActivity : AppCompatActivity() {
         override fun onReceive(context: Context, intent: Intent) {
             val status = NetworkUtil.getConnectivityStatusString(context)
             if (status != null)
-                showNoNetworkDialog(status)
+                //showNoNetworkDialog(status)
             else {
                 if (networkAlertDialog != null && networkAlertDialog!!.isShowing())
                     networkAlertDialog!!.dismiss()
@@ -116,8 +119,8 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    public fun showNoNetworkDialog(status: String) {
-         networkDialog = AlertDialog.Builder(applicationContext)
+   /*  fun showNoNetworkDialog(status: String) {
+        networkDialog = AlertDialog.Builder(applicationContext)
         networkDialog.setTitle(getString(R.string.netwrk_status))
         networkDialog.setMessage(status)
         networkDialog.setPositiveButton(getString(R.string.retry), DialogInterface.OnClickListener { dialog, which ->
@@ -131,7 +134,7 @@ open class BaseActivity : AppCompatActivity() {
         if (!networkAlertDialog.isShowing()) {
             networkAlertDialog.show()
         }
-    }
+    }*/
 
     fun keyHash() {
         try {
