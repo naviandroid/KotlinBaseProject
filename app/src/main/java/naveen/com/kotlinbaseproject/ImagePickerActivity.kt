@@ -1,12 +1,12 @@
-package netset.com.kotlinbaseproject
+package naveen.com.kotlinbaseproject
 
 import android.Manifest
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
+import naveen.com.kotlinbaseproject.Utils.ImageUtils
 import netset.com.kotlinbaseproject.MyInterFace.PermCallBack
-import netset.com.kotlinbaseproject.Utils.ImageUtils
 import java.io.File
 
 class ImagePickerActivity : BaseActivity(), PermCallBack, ImageUtils.ImageSelectCallback {

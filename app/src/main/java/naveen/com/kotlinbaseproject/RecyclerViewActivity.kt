@@ -1,4 +1,4 @@
-package netset.com.kotlinbaseproject
+package naveen.com.kotlinbaseproject
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity

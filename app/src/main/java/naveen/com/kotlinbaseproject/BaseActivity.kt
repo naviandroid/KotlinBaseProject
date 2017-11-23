@@ -1,4 +1,4 @@
-package netset.com.kotlinbaseproject
+package naveen.com.kotlinbaseproject
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -16,15 +16,17 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Base64
 import android.util.Log
 import android.widget.Toast
+import naveen.com.kotlinbaseproject.Utils.ImageUtils
 import netset.com.kotlinbaseproject.MyInterFace.PermCallBack
-import netset.com.kotlinbaseproject.Utils.ImageUtils
 import netset.com.kotlinbaseproject.Utils.NetworkUtil
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 import java.util.*
 
 /**
+ *
  * Created by netset on 21/11/17.
+ *
  */
 open class BaseActivity : AppCompatActivity() {
 
@@ -38,10 +40,9 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
-       // networkDialog = AlertDialog.Builder(this)
+        // networkDialog = AlertDialog.Builder(this)
         initializeNetworkBroadcast()
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
@@ -65,15 +66,15 @@ open class BaseActivity : AppCompatActivity() {
                 hasPerms = false
             }
         }
-        if (!hasPerms) {
+        return if (!hasPerms) {
             val permsString = arrayOfNulls<String>(permsArray.size)
             for (i in permsArray.indices) {
                 permsString[i] = permsArray[i]
             }
             ActivityCompat.requestPermissions(this@BaseActivity, permsString, 99)
-            return false
+            false
         } else
-            return true
+            true
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
@@ -111,30 +112,14 @@ open class BaseActivity : AppCompatActivity() {
         override fun onReceive(context: Context, intent: Intent) {
             val status = NetworkUtil.getConnectivityStatusString(context)
             if (status != null)
-                //showNoNetworkDialog(status)
+            //showNoNetworkDialog(status)
+                Log.e("TAG", "Not Connected")
             else {
                 if (networkAlertDialog != null && networkAlertDialog!!.isShowing())
                     networkAlertDialog!!.dismiss()
             }
         }
     }
-
-   /*  fun showNoNetworkDialog(status: String) {
-        networkDialog = AlertDialog.Builder(applicationContext)
-        networkDialog.setTitle(getString(R.string.netwrk_status))
-        networkDialog.setMessage(status)
-        networkDialog.setPositiveButton(getString(R.string.retry), DialogInterface.OnClickListener { dialog, which ->
-            if (!isNetworkAvailable()) {
-                dialog.dismiss()
-                showNoNetworkDialog(status)
-            }
-        })
-        networkDialog.setCancelable(false)
-        var networkAlertDialog = networkDialog.create()
-        if (!networkAlertDialog.isShowing()) {
-            networkAlertDialog.show()
-        }
-    }*/
 
     fun keyHash() {
         try {
@@ -149,13 +134,11 @@ open class BaseActivity : AppCompatActivity() {
         } catch (e: NoSuchAlgorithmException) {
             e.printStackTrace()
         }
-
     }
 
     private fun showToast(msg: String) {
         Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show();
     }
-
 
     fun isNetworkAvailable(): Boolean {
         val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

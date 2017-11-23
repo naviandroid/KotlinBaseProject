@@ -1,20 +1,20 @@
-package netset.com.kotlinbaseproject
+package naveen.com.kotlinbaseproject
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import naveen.com.kotlinbaseproject.myAdapter.MyViewHolder
 import netset.com.kotlinbaseproject.MyInterFace.RecyclerClick
-import netset.com.kotlinbaseproject.myAdapter.MyViewHolder
 
 /**
  * Created by netset on 21/11/17.
  */
-class myAdapter(val hello: Int, val listener: RecyclerClick) : RecyclerView.Adapter<MyViewHolder>() {
+class myAdapter(val size: Int, val listener: RecyclerClick) : RecyclerView.Adapter<MyViewHolder>() {
 
     override fun getItemCount(): Int {
-        return hello
+        return size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -24,7 +24,6 @@ class myAdapter(val hello: Int, val listener: RecyclerClick) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bindItems(position, listener)
-        //holder.
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

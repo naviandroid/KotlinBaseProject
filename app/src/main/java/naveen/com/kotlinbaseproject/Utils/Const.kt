@@ -1,4 +1,4 @@
-package netset.com.kotlinbaseproject.Utils
+package naveen.com.kotlinbaseproject.Utils
 
 object Const {
 

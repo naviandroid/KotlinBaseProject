@@ -1,4 +1,4 @@
-package netset.com.kotlinbaseproject.Utils;
+package naveen.com.kotlinbaseproject.Utils;
 
 import android.Manifest;
 import android.app.Activity;
@@ -35,7 +35,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import netset.com.kotlinbaseproject.R;
+import naveen.com.kotlinbaseproject.R;
 
 /**
  * Created by naveen sharma on 17/10/16.

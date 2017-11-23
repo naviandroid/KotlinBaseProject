@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="netset.com.kotlinbaseproject">
+    package="naveen.com.kotlinbaseproject">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,6 +15,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="naveen.com.kotlinbaseproject.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +33,7 @@
         </activity>
         <activity android:name=".RecyclerViewActivity" />
         <activity android:name=".ImagePickerActivity" />
+        <activity android:name=".FragmentActivity" />
         <activity
             android:name="com.soundcloud.android.crop.CropImageActivity"
             android:screenOrientation="portrait" />

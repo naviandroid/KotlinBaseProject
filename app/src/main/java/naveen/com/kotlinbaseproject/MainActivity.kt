@@ -1,4 +1,4 @@
-package netset.com.kotlinbaseproject
+package naveen.com.kotlinbaseproject
 
 import android.content.Intent
 import android.os.Bundle
@@ -19,12 +19,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun MainActivity.findids() {
         val myText = findViewById<TextView>(R.id.hello) as TextView
         val button = findViewById<Button>(R.id.button) as TextView
+        val gotoFragment = findViewById<Button>(R.id.gotoFragment) as TextView
         val imagePick = findViewById<Button>(R.id.imagePick) as TextView
         val recycalview = findViewById<Button>(R.id.recycalview)
         myText.setOnClickListener(this)
         button.setOnClickListener(this)
         recycalview.setOnClickListener(this)
         imagePick.setOnClickListener(this)
+        gotoFragment.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -33,8 +35,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.button -> showAlertDialog()
             R.id.recycalview -> goToRecycalView()
             R.id.imagePick -> goImagePicker()
+            R.id.gotoFragment -> goToFragment()
         //  else ->
         }
+    }
+
+    private fun goToFragment() {
+        val intent = Intent(applicationContext, FragmentActivity::class.java)
+        startActivity(intent)
     }
 
     private fun goImagePicker() {
@@ -66,7 +74,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun customAlertDialog() {
-        val view = layoutInflater.inflate(R.layout.dolaogview, null) as View
+        val view = layoutInflater.inflate(R.layout.dialogview, null) as View
         val simpleAlert = AlertDialog.Builder(this).create()
         simpleAlert.setTitle("custom Dialog")
         simpleAlert.setView(view)
